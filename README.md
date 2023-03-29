@@ -1,21 +1,29 @@
 # Documentation of Geoinformatics final assignment WS2022/23
 
+## Group members
+This assignment is done by the following contributors:
+* Abu Hena AL Shafi(Matriculation no: 28103): @alshafi834
+* Safayet Bin Azam(Matriculation no: ): @safayet
+
 ## General Idea
+
 The general idea of this task is to scrape master data of different location along with the periodic water level(w) and discharge level(q) data and analyse it with QGIS connecting with the database.
 
-## One time scrapping of Master data of Gauges
-The one time master data of different gaues are scrapped from the eglv website. The URL example is https://howis.eglv.de/pegel/html/stammdaten_html/MO_StammdatenPegel.php?PIDVal=32. To scrape the master data of different locations PID value was changed with a loop and all the master data was scrapped from the website. Each location consists of different parameters which are described as follows:
+----------------------------------------------------------------------------------------------------------------------
 
-Pegelnummer - the level number of the gauge 
-Gewässer - the body of water <br />
-Flusskilometer - the length scale along the river <br />
-Pegelnullpunkt - referrance height of the water level measurement <br />
-Einzugsgebiet - the total catchment of the river <br />
-Rechtswert - easting in Gauss-Krüger co-ordinate system <br />
-Hochwert - northing in Gauss-Krüger co-ordinate system <br />
-MHW - Mean high water level measured in cm <br />
-MW - Mean water level measured in cm <br />
-MNW - Mean low water level measured in cm <br />
+## Exercise-1: One time scrapping of Master data of Gauges
+The one time master data of different gauges are scraped from the eglv website. The URL example is https://howis.eglv.de/pegel/html/stammdaten_html/MO_StammdatenPegel.php?PIDVal=32. To scrape the master data of different locations PID value was changed with a loop and all the master data was scrapped from the website. Each location consists of different parameters which are described as follows:
+
+**Pegelnummer** - the level number of the gauge 
+**Gewässer** - the body of water <br />
+**Flusskilometer** - the length scale along the river <br />
+**Pegelnullpunkt** - referrance height of the water level measurement <br />
+**Einzugsgebiet** - the total catchment of the river <br />
+**Rechtswert** - easting in Gauss-Krüger co-ordinate system <br />
+**Hochwert** - northing in Gauss-Krüger co-ordinate system <br />
+**MHW** - Mean high water level measured in cm <br />
+**MW** - Mean water level measured in cm <br />
+**MNW** - Mean low water level measured in cm <br />
 
 All these data has been scrapped from the website looping over the URL and stored into a csv file first. A script was written to scrape these data and storing this data into a postgres table afterwards. The script was written in python and run with jupyter notebook. The jupyter notebook file is also provided in this repository here. To have a quick overview of the script we are attaching it here as well.
 
@@ -98,8 +106,10 @@ If we run the script after setting up the database and the table, then all the s
 %sql select * from "Masterdata"
 ```
 
+----------------------------------------------------------------------------------------------------------------------
 
-## Periodic web scraping of time series
+
+## Exercise-2: Periodic web scraping of time series
 
 In this exercise we have scraped the periodic time series data from the eglv website: https://howis.eglv.de/pegel/html/uebersicht_internet.php. A python script was written which is able to scrape the time series data with water level W(t) and discharge Q(t) value. This script can be run from jupyterlab notebook. The script is attached below:
 ```
@@ -192,14 +202,14 @@ This script is also run as a cronjob every 7 minutes with the same strategy of c
 ```
 */7 * * * * /Users/aalshafi/opt/anaconda3/bin/python3 /Users/aalshafi/GeoInformatics/finalassignment/cronscript2.py
 ```
+----------------------------------------------------------------------------------------------------------------------
 
-
-## Georeference five gauge location maps
+## Exercise-3: Georeference five gauge location maps
 To georeferrance five gauge location we have selected five different maps of five different locations. This five maps were then georeferenced on top of another real map. The procedure of georeferencing has been described below:
 
+----------------------------------------------------------------------------------------------------------------------
 
-
-## PostgreSQL / PostGIS
+## Exercise-4: PostgreSQL / PostGIS
 At first the database scheme was created. To create the database user and the database we have to execute the sql scripts. Make sure you are on the same path where the sql scripts are located.
 * To create the database user run the command: `psql -U postgres -d postgres -h localhost -f 010_create_users_for_groundwater_db.sql`
 * To create the database run the command: `psql -U postgres -d postgres -h localhost -f 020_create_database_groundwater_db.sql`
@@ -226,3 +236,6 @@ from "Stations" s, "Waterlevel" m
 where m.sid = s.sid and param='w';
 and PARAM = 'Q';
 ``
+----------------------------------------------------------------------------------------------------------------------
+
+## Exercise-5: QGIS
