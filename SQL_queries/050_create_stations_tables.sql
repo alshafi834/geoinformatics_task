@@ -1,34 +1,30 @@
-/* 
-  Connect as user env_master to database env_db:
-  psql -h localhost -U env_master -d env_db -f 030_create_bars_exercise_tables_and_insert_V001.sql 
-*/
 
-
-/* Create table Sells */
 
 /*DROP TABLE public."Stations";*/
 
 
-/*CREATE TABLE public."Stations"
+CREATE TABLE public."Stations"
 (
-    Sid varchar(50),
-    Name varchar(50),
+    Sid varchar(5) PRIMARY KEY,
+    Name varchar(70),
     Peggelnummer decimal(10, 2),
     Geometry GEOMETRY(Point, 31466)
 )
 WITH (
     OIDS = FALSE
-);*/
+);
 
 
+INSERT INTO public."Stations" values ('s1', 'Fusternberg', 20001, '0101000020EA7A000000000000C66943410000000035D65541');
+INSERT INTO public."Stations" values ('s2', 'Dorsten', 20004, '0101000020EA7A0000000000002F954341000000C043D85541');
+INSERT INTO public."Stations" values ('s3', 'Haltern', 28085, '0101000020EA7A00000000000002B343410000008044DF5541');
+INSERT INTO public."Stations" values ('s4', 'Lunen', 20008, '0101000020EA7A0000000000009BD143410000000012D35541');
+INSERT INTO public."Stations" values ('s5', 'KA Hamm', 20012, '0101000020EA7A000000000000B602444100000040ADDA5541');
 INSERT INTO public."Stations" values ('s6', 'Mengede, A45 ', 10026, '0101000020EA7A000000000000D0CB434100000000C1CE5541');
+INSERT INTO public."Stations" values ('s7', 'Bottrop-Sud', 10008, '0101000020EA7A00000000000060934341000000C0D3C65541');
+INSERT INTO public."Stations" values ('s8', 'Bottrop, Essener Strasse', 10101, '0101000020EA7A0000295C8FA2DC9143413D0AD78347C65541');
+INSERT INTO public."Stations" values ('s9', 'Bahnstrasse', 10103, '0101000020EA7A000000000000857E434100000000D1C85541');
 
 
-/*
-INSERT INTO public."Sells" values ('Joes', 'Bud', 2.50);
-INSERT INTO public."Sells" values ('Joes', 'Miller', 2.75);
-INSERT INTO public."Sells" values ('Sues', 'Bud', 2.50);
-INSERT INTO public."Sells" values ('Sues', 'Coors', 3.00);
-*/
 
 
