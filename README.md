@@ -3,7 +3,7 @@
 ## Group members
 This assignment is done by the following contributors:
 * Abu Hena AL Shafi(Matriculation no: 28103): @alshafi834
-* Safayet Bin Azam(Matriculation no: ): @safayet
+* Safayet Bin Azam(Matriculation no: 28406): @prangonsafayet
 
 ## General Idea
 
