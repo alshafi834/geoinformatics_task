@@ -207,6 +207,27 @@ This script is also run as a cronjob every 7 minutes with the same strategy of c
 ## Exercise-3: Georeference five gauge location maps
 To georeferrance five gauge location we have selected five different maps of five different locations. This five maps were then georeferenced on top of another real map. The procedure of georeferencing has been described below:
 
+* At first the location map was from the provided URL and from the Stammdaten, the map was selected and it was cropped accordingly to fit <br /> <img width="276" alt="image" src="https://user-images.githubusercontent.com/34316105/228907307-ae45bf8b-3787-4800-94ca-afa8ddc8f9f3.gif">
+
+* Then on QGIS the Georeferencer option was selected frin the Layers tab on the top <br /> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228908539-f22afc13-8f98-437f-854c-b75ffc30466f.png">
+
+* From the Georeferencer window, the map was opened through the "Open Raster" option <br/> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228909822-a22174e1-722b-4801-9d5e-1d1ee0c29983.png">
+
+* In the QGIS main window the command was typed in with the longitude latitude values found in google maps. The command was 
+`go lang_val lat_val`. It directed to the actual position of the desired destination on the map. <br/> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228910626-c7c07241-a0dd-4dfb-b92b-ed3bdd556cae.png">
+
+* Then on the Georeferencer window, a suitable GCP point was chosen in the raster image through the "Add Point" Option. <br/> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228911252-fbc56cee-b7f5-41c3-88e0-91fc392c8e75.png"><br/><br/>This popped up a window where "From Map Canvas" was selected from the bottom left. <br/> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228911641-712f4346-1f69-4fe4-8033-13c9421c85aa.png"><br/> <br/><br/>Then this point from the raster image was searched in the actual map and selected. After that "Ok" button was selected to add the GCP point entry for the raster image and the map.<br/> <br/>This process was done 20-25 times to recieve more accuracy for Georeferencing.
+
+* After adding all the points, the "Start Geo Referencing" button was used from the Georeferencer window. <br/> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228912374-84b4d376-dfe3-4342-b3d1-f9d7ce280729.png">
+
+Inside "Transformation settings, the type of Transformation was "Thin Plain Spline" and the Target CRS was "EPSG:25832 - ETRS89 / UTM zone 32N".
+
+* This created a layer on top of the actual map inside the QGIS main window with the rastered map on top of the Openmap and the points have been used to georeference these two maps.
+
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/34316105/228913109-52ad1265-71b4-4d07-8fa3-2510051b58f1.png">
+
+
+
 ----------------------------------------------------------------------------------------------------------------------
 
 ## Exercise-4: PostgreSQL / PostGIS
