@@ -224,24 +224,24 @@ To check if the data has been stored properly, we can run the sql magic query in
 ## Exercise-3: Georeference five gauge location maps
 To georeferrance five gauge location we have selected five different maps of five different locations. This five maps were then georeferenced on top of another real map. The georeferencing can be opened in QGIS and checkied by opening [this file](https://github.com/alshafi834/geoinformatics_task/blob/master/Georeferencing/geoReferencing_test.qgz) as a project. The procedure of georeferencing has been described below:
 
-* At first the location maps were downloaded from the provided URL, the map was selected and it was cropped accordingly to fit <br /> <img width="276" alt="image" src="https://user-images.githubusercontent.com/34316105/228907307-ae45bf8b-3787-4800-94ca-afa8ddc8f9f3.gif">
+* At first the location maps were downloaded from the provided URL, the map was selected and it was cropped accordingly to fit <br /> <img width="176" alt="image" src="https://user-images.githubusercontent.com/34316105/228907307-ae45bf8b-3787-4800-94ca-afa8ddc8f9f3.gif">
 
-* Then on QGIS the Georeferencer option was selected frin the Layers tab on the top <br /> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228908539-f22afc13-8f98-437f-854c-b75ffc30466f.png">
+* Then on QGIS the Georeferencer option was selected frin the Layers tab on the top <br /> <img width="200" alt="image" src="https://user-images.githubusercontent.com/34316105/228908539-f22afc13-8f98-437f-854c-b75ffc30466f.png">
 
-* From the Georeferencer window, the map was opened through the "Open Raster" option <br/> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228909822-a22174e1-722b-4801-9d5e-1d1ee0c29983.png">
+* From the Georeferencer window, the map was opened through the "Open Raster" option <br/> <img width="200" alt="image" src="https://user-images.githubusercontent.com/34316105/228909822-a22174e1-722b-4801-9d5e-1d1ee0c29983.png">
 
 * In the QGIS main window the command was typed in with the longitude latitude values found in google maps. The command was 
-`go lang_val lat_val`. It directed to the actual position of the desired destination on the map. <br/> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228910626-c7c07241-a0dd-4dfb-b92b-ed3bdd556cae.png">
+`go lang_val lat_val`. It directed to the actual position of the desired destination on the map. <br/> <img width="200" alt="image" src="https://user-images.githubusercontent.com/34316105/228910626-c7c07241-a0dd-4dfb-b92b-ed3bdd556cae.png">
 
-* Then on the Georeferencer window, a suitable GCP point was chosen in the raster image through the "Add Point" Option. <br/> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228911252-fbc56cee-b7f5-41c3-88e0-91fc392c8e75.png"><br/><br/>This popped up a window where "From Map Canvas" was selected from the bottom left. <br/> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228911641-712f4346-1f69-4fe4-8033-13c9421c85aa.png"><br/> <br/><br/>Then this point from the raster image was searched in the actual map and selected. After that "Ok" button was selected to add the GCP point entry for the raster image and the map.<br/> <br/>This process was done 20-25 times to recieve more accuracy for Georeferencing.
+* Then on the Georeferencer window, a suitable GCP point was chosen in the raster image through the "Add Point" Option. <br/> <img width="200" alt="image" src="https://user-images.githubusercontent.com/34316105/228911252-fbc56cee-b7f5-41c3-88e0-91fc392c8e75.png"><br/><br/>This popped up a window where "From Map Canvas" was selected from the bottom left. <br/> <img width="200" alt="image" src="https://user-images.githubusercontent.com/34316105/228911641-712f4346-1f69-4fe4-8033-13c9421c85aa.png"><br/> <br/><br/>Then this point from the raster image was searched in the actual map and selected. After that "Ok" button was selected to add the GCP point entry for the raster image and the map.<br/> <br/>This process was done 20-25 times to recieve more accuracy for Georeferencing.
 
-* After adding all the points, the "Start Geo Referencing" button was used from the Georeferencer window. <br/> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228912374-84b4d376-dfe3-4342-b3d1-f9d7ce280729.png">
+* After adding all the points, the "Start Geo Referencing" button was used from the Georeferencer window. <br/> <img width="200" alt="image" src="https://user-images.githubusercontent.com/34316105/228912374-84b4d376-dfe3-4342-b3d1-f9d7ce280729.png">
 
 Inside "Transformation settings, the type of Transformation was "Thin Plain Spline" and the Target CRS was "EPSG:25832 - ETRS89 / UTM zone 32N".
 
 * This created a layer on top of the actual map inside the QGIS main window with the rastered map on top of the Openmap and the points have been used to georeference these two maps.
 
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/34316105/228913109-52ad1265-71b4-4d07-8fa3-2510051b58f1.png">
+<img width="200" alt="image" src="https://user-images.githubusercontent.com/34316105/228913109-52ad1265-71b4-4d07-8fa3-2510051b58f1.png">
 
 
 
@@ -310,5 +310,7 @@ https://user-images.githubusercontent.com/34316616/229079469-38bd6d2c-eeea-47af-
 ----------------------------------------------------------------------------------------------------------------------
 
 ## Result
-By accomplishing all the exercise we have achieved to 
+By successfully completing every exercise, we were able to scrape the time-series data for water level and discharge in addition to the one-time master data from various stations. Five maps were georeferenced in QGIS and placed on top of the actual map among all the station maps. The scraped data was put into the Postgres database, which underwent analysis, leading to the creation of various views in the database, and was then visualized using the QGIS temporal controller. This helps us to monitor groundwater levels in different locations with real-time data that are being continuously scraped.
+
+Please refer to [@alshafi834](https://github.com/alshafi834) or [@prangonsafayet](https://github.com/prangonsafayet) in case of any difficulties regarding project setup or installation.
 
