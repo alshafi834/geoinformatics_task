@@ -1,13 +1,23 @@
 # Documentation of Geoinformatics final assignment WS2022/23
 
 ## Group members
-This assignment is done by the following contributors:
-* Abu Hena AL Shafi(Matriculation no: 28103): @alshafi834
-* Safayet Bin Azam(Matriculation no: 28406): @prangonsafayet
+This assignment is done by the following contributors(contribution is equal):
+* Abu Hena AL Shafi(Matriculation no: 28103): [@alshafi834](https://github.com/alshafi834)
+* Safayet Bin Azam(Matriculation no: 28406): [@prangonsafayet](https://github.com/prangonsafayet)
 
 ## General Idea
 
 The general idea of this task is to scrape master data of different location along with the periodic water level(w) and discharge level(q) data and analyse it with QGIS connecting with the database.
+
+## Preparation
+As a preparation of the tasks, we have to install certain applications, tools and packages. 
+* Install [QGIS](http://qgis.org/en/site/) as a geographic information system application
+* Install [PostgreSQL](https://www.postgresql.org/) as a database management system and [PostGIS](http://postgis.net/) as a spatial DB extender.
+* Install [Anaconda](https://www.anaconda.com/) to manage different python packages.
+    * Once we install Anaconda, it's preferred to install a separate environment for the project. We can create an evnironment called 'geoassignment' by running the command: `conda create -n geoassignment -c conda-forge python=3`
+    * We can then activate the environment with the command: `conda activate geoassignment`
+    * We have to install jupyter lab now to manage and run the codes: `conda install -c conda-forge jupyterlab`
+    * Install other necessary packages for the project: `conda install -c conda-forge sqlalchemy psycopg2 pgspecial ipython-sql jupyterlab geopandas`
 
 ----------------------------------------------------------------------------------------------------------------------
 
@@ -92,14 +102,14 @@ conn = engine.connect()
 gdf.to_postgis('Masterdata', con=conn, if_exists='append', index=False)
 ```
 
-This script is able to scrape to all the master data of all location and store it to the postgres table. Before storing the data to postgres table it creates a new geom column fron the easting and northing columnt so that postgres can identify the column as a geometry column. As the easting and northing were on Gauss-Krüger coordinate system, we used EPSG 31466 to convert the coordinates.
+This script is able to scrape to all the master data of all location and store it to the postgres table. Before storing the data to postgres table it creates a new geom column fron the easting and northing columnt so that postgres can identify the column as a geometry column. As the easting and northing were on Gauss-Krüger coordinate system, we used EPSG 31466 to convert the coordinates. This is an expensive operation and it takes some time to generate the rows into the csv file as it scrapes the data one by one looping over the URL.
 
 
 Before running the script we have to make sure that we set up the database and the masterdata table properly. 
-* To set up the database, a sql script has been written which needs to be executed first. The sql script can be found here.
-* To set up the Masterdata table, another script needs to be executed which can be found here.
+* To set up the database, a sql script has been written which needs to be executed first. The sql script to create database user can be found [here](https://github.com/alshafi834/geoinformatics_task/blob/master/SQL_queries/010_create_users_for_groundwater_db.sql) and to create database can be found [here](https://github.com/alshafi834/geoinformatics_task/blob/master/SQL_queries/020_create_database_groundwater_db.sql).
+* To set up the Masterdata table, another script needs to be executed which can be found [here](https://github.com/alshafi834/geoinformatics_task/blob/master/SQL_queries/030_create_masterdata_table.sql).
 
-If we run the script after setting up the database and the table, then all the scraped data will be stored properly. To check if the data has been stored properly, we can run the sql magic query in jupyterlab notebook as follows:
+More details are provided on the [Exercise-4](https://github.com/alshafi834/geoinformatics_task/blob/master/README.md#exercise-4-postgresql--postgis) about how to create the database and tables with necessary commands. If we run the script after setting up the database and the table, then all the scraped data will be stored properly. To check if the data has been stored properly, we can run the sql magic query in jupyterlab notebook as follows:
 ```
 %load_ext sql
 %sql postgresql://env_master:M123xyz@localhost/groundwater
@@ -202,12 +212,19 @@ This script is also run as a cronjob every 7 minutes with the same strategy of c
 ```
 */7 * * * * /Users/aalshafi/opt/anaconda3/bin/python3 /Users/aalshafi/GeoInformatics/finalassignment/cronscript2.py
 ```
+
+To check if the data has been stored properly, we can run the sql magic query in jupyterlab notebook as follows:
+```
+%load_ext sql
+%sql postgresql://env_master:M123xyz@localhost/groundwater
+%sql select * from "Waterdata"
+```
 ----------------------------------------------------------------------------------------------------------------------
 
 ## Exercise-3: Georeference five gauge location maps
-To georeferrance five gauge location we have selected five different maps of five different locations. This five maps were then georeferenced on top of another real map. The procedure of georeferencing has been described below:
+To georeferrance five gauge location we have selected five different maps of five different locations. This five maps were then georeferenced on top of another real map. The georeferencing can be opened in QGIS and checkied by opening [this file](https://github.com/alshafi834/geoinformatics_task/blob/master/Georeferencing/geoReferencing_test.qgz) as a project. The procedure of georeferencing has been described below:
 
-* At first the location map was from the provided URL and from the Stammdaten, the map was selected and it was cropped accordingly to fit <br /> <img width="276" alt="image" src="https://user-images.githubusercontent.com/34316105/228907307-ae45bf8b-3787-4800-94ca-afa8ddc8f9f3.gif">
+* At first the location maps were downloaded from the provided URL, the map was selected and it was cropped accordingly to fit <br /> <img width="276" alt="image" src="https://user-images.githubusercontent.com/34316105/228907307-ae45bf8b-3787-4800-94ca-afa8ddc8f9f3.gif">
 
 * Then on QGIS the Georeferencer option was selected frin the Layers tab on the top <br /> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316105/228908539-f22afc13-8f98-437f-854c-b75ffc30466f.png">
 
@@ -257,6 +274,10 @@ from "Stations" s, "Waterlevel" m
 where m.sid = s.sid and param='w';
 and PARAM = 'Q';
 ``
+
+To view and manage data easily we can also install [pgAdmin4](https://www.pgadmin.org/download/) and enable postGIS extension with the following commands:
+* `CREATE EXTENSION postgis;`
+* `CREATE EXTENSION postgis_topology;`
 ----------------------------------------------------------------------------------------------------------------------
 
 ## Exercise-5: QGIS
@@ -277,8 +298,12 @@ In this exercise we connected the postgres database with QGIS with the help of P
 * We can now open the temporal controller from the view option. Go to 'panel' and select 'temporal controller'. Now press on the play button. We can now set the animation range, step and duration. Now if we play the temporal controller, it will show the water level with animation. Since the water level is not changing much, the animation doesn't look impressive enough for this case. <br /> <img width="167" alt="image" src="https://user-images.githubusercontent.com/34316616/228773997-95cb1740-f35a-4e73-98db-fc9fd7c62806.png">
 
 
+After performing all these steps now we can see the animation and export the images by clicking on the 'export animation' button. Combining all the images we can create a video. But for a better view with the temporal controller parameters, we have recorded the screencast and it can be found here.
 
 
 
+----------------------------------------------------------------------------------------------------------------------
 
+##Result
+By accomplishing all the exercise we have achieved to 
 
