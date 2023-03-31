@@ -222,7 +222,7 @@ To check if the data has been stored properly, we can run the sql magic query in
 ----------------------------------------------------------------------------------------------------------------------
 
 ## Exercise-3: Georeference five gauge location maps
-To georeferrance five gauge location we have selected five different maps of five different locations. This five maps were then georeferenced on top of another real map. The georeferencing can be opened in QGIS and checkied by opening [this file](https://github.com/alshafi834/geoinformatics_task/blob/master/Georeferencing/geoReferencing_test.qgz) as a project. The procedure of georeferencing has been described below:
+To georeferrance five gauge location we have selected five different maps of five different locations. These five maps were then georeferenced on top of another real map. The georeferencing can be opened in QGIS and checked by opening [this file](https://github.com/alshafi834/geoinformatics_task/blob/master/Georeferencing/geoReferencing_test.qgz) as a project. The procedure of georeferencing has been described below:
 
 * At first the location maps were downloaded from the provided URL, the map was selected and it was cropped accordingly to fit <br /> <img width="176" alt="image" src="https://user-images.githubusercontent.com/34316105/228907307-ae45bf8b-3787-4800-94ca-afa8ddc8f9f3.gif">
 
