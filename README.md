@@ -1,4 +1,4 @@
-# Documentation of Geoinformatics final assignment WS2022/23
+# Technical documentation of Geoinformatics final assignment WS2022/23
 
 ## Group members
 This assignment is done by the following contributors(contribution is equal):
@@ -263,17 +263,20 @@ After creating the database tables and storing all the data into the table by ru
 create view v_stations_w as
 select s.sid, s.geometry, s.name, m.timestamp, m.param, m.value 
 from "Stations" s, "Waterlevel" m
-where m.sid = s.sid and param='w';
-and PARAM = 'W';
+where m.sid = s.sid 
+and param = 'w';
 ``
+<br/> It will create a view with the mentioned columns only with water level values: <br/> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316616/229089095-b2f48538-0fb4-4602-ac92-b010ef418e3e.png">
+
 * To get all the "q" value along with stations geom data, we can create a view with the following sql query:
 ``
-create view v_stations_w as
+create view v_stations_q as
 select s.sid, s.geometry, s.name, m.timestamp, m.param, m.value 
 from "Stations" s, "Waterlevel" m
-where m.sid = s.sid and param='w';
-and PARAM = 'Q';
+where m.sid = s.sid 
+and param = 'q';
 ``
+<br/> It will create a view with the mentioned columns only with water level values: <br/> <img width="400" alt="image" src="https://user-images.githubusercontent.com/34316616/229089483-7194921a-83e7-4678-9a81-3382bf88ec23.png">
 
 To view and manage data easily we can also install [pgAdmin4](https://www.pgadmin.org/download/) and enable postGIS extension with the following commands:
 * `CREATE EXTENSION postgis;`
