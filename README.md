@@ -298,12 +298,17 @@ In this exercise we connected the postgres database with QGIS with the help of P
 * We can now open the temporal controller from the view option. Go to 'panel' and select 'temporal controller'. Now press on the play button. We can now set the animation range, step and duration. Now if we play the temporal controller, it will show the water level with animation. Since the water level is not changing much, the animation doesn't look impressive enough for this case. <br /> <img width="167" alt="image" src="https://user-images.githubusercontent.com/34316616/228773997-95cb1740-f35a-4e73-98db-fc9fd7c62806.png">
 
 
-After performing all these steps now we can see the animation and export the images by clicking on the 'export animation' button. Combining all the images we can create a video. But for a better view with the temporal controller parameters, we have recorded the screencast and it can be found here.
+After performing all these steps now we can see the animation and export the images by clicking on the 'export animation' button. Combining all the images we can create a video. But for a better view with the temporal controller parameters, we have recorded the screencast and it can be found [here](https://github.com/alshafi834/geoinformatics_task/blob/master/Temporal%20controller/animation_video_output.mp4).
+
+
+Here we are also attaching the video for a quick view:
+
+https://user-images.githubusercontent.com/34316616/229079469-38bd6d2c-eeea-47af-b3c7-1ba348800561.mp4
 
 
 
 ----------------------------------------------------------------------------------------------------------------------
 
-##Result
+## Result
 By accomplishing all the exercise we have achieved to 
 
