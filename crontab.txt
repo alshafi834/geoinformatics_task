@@ -1,0 +1,4 @@
+# This is an example for crontab command. The path can differ based on machine
+
+*/5 * * * * /Users/aalshafi/opt/anaconda3/bin/python3 /Users/aalshafi/GeoInformatics/finalassignment/cronscript.py
+*/7 * * * * /Users/aalshafi/opt/anaconda3/bin/python3 /Users/aalshafi/GeoInformatics/finalassignment/cronscript2.py

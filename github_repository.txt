@@ -1,0 +1,3 @@
+The whole project has been pushed into a GitHub repository.
+
+Please find the GitHub repository here: https://github.com/alshafi834/geoinformatics_task
